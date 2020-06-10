@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser")
 const feedRoutes = require("./routes/feed");
-
+const db = require("./util/database").db;
 const app = express();
 
 app.use(bodyParser.json())
@@ -15,4 +15,12 @@ app.use((req, res, next) => {
 // routes
 app.use('/feed', feedRoutes)
 
-app.listen(8080);
+db()
+    .then(result => {
+        console.log('connected')
+        app.listen(8080);
+    })
+    .catch(err => {
+    console.log(err)
+})
+
