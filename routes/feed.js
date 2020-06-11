@@ -5,6 +5,8 @@ const feedController = require("./../controllers/feed");
 
 // GET /feed/posts
 router.get("/posts", feedController.getPosts);
+// GET /feed/post/:postId
+router.get("/post/:postId", feedController.getPost)
 
 // POST /feed/posts
 router.post("/post", [
