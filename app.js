@@ -8,7 +8,6 @@ const uuidv4 = require('uuid').v4
 
 const app = express();
 
- 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, 'images');
@@ -41,13 +40,14 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/feed', feedRoutes)
+// handle errors
 app.use((error, req, res, next) => {
     console.log(error)
     const status = error.statusCode || 500;
     const message = error.message;
     res.status(status).json({ message: message })
 })
-
+// database connexion
 db()
     .then(result => {
         console.log('connected')
