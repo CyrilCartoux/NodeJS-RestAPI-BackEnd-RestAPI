@@ -31,4 +31,6 @@ router.put('/signup', [
         .withMessage("Please enter a name")
 ], authController.signup);
 
+router.post('/login', authController.login)
+
 module.exports = router;
