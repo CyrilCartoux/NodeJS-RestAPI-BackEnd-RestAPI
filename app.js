@@ -54,7 +54,11 @@ app.use((error, req, res, next) => {
 db()
     .then(result => {
         console.log('connected')
-        app.listen(8080);
+        const server = app.listen(8080);
+        const socketIo = require("socket.io")(server)
+        socketIo.on('connection', socket => {
+            console.log('client connected')
+        })
     })
     .catch(err => {
         console.log(err)
