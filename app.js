@@ -55,7 +55,7 @@ db()
     .then(result => {
         console.log('connected')
         const server = app.listen(8080);
-        const socketIo = require("socket.io")(server)
+        const socketIo = require("./socket").init(server)
         socketIo.on('connection', socket => {
             console.log('client connected')
         })
