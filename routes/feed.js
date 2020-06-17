@@ -17,7 +17,7 @@ router.post("/post", isAuth, [
     body('content')
         .trim()
         .isLength({ min: 5 })
-], feedController.postPost);
+], feedController.createPost);
 
 // PUT /feed/post/:postId
 router.put("/post/:postId", isAuth, [
